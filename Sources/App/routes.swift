@@ -1,7 +1,7 @@
 import Fluent
 import Vapor
 
-func routes(_ app: Application) throws {
+func routes(_ app: Application) async throws {
     app.get { req async in
         "It works!"
     }
@@ -10,5 +10,14 @@ func routes(_ app: Application) throws {
         "Hello, world!"
     }
 
-    try app.register(collection: TodoController())
+    try app.register(collection: StickerController()) // to call sticker controller
+    try app.register(collection: UserController())
+    try app.register(collection: OrderController())
+//    //migration
+//    app .migrations.add(CreateStickerTableMigration())
+//    try await app.autoMigrate()
+    
+    
 }
+
+

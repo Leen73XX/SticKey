@@ -8,15 +8,17 @@
 import Foundation
 import Fluent  //استخدم الفلونت في بناء table في DB
 
+// 1st step 
+
 struct CreateStickerTableMigration: AsyncMigration{
     // my table
     func prepare(on database: Database) async throws {
         try await database.schema("sticker")
         
             .id() // primary key
-            .field("name", .string)
-            .field("price", .int)
-            .field("image", .string)
+            .field("name", .string ,.required)
+            .field("price", .int ,.required)
+            .field("image", .string ,.required)
         
         /*culomn name , data type , constraint
          مثل(.require  تشبه (NOT NULL) .reference("table name","culomn name")  تشبه (forginkey))*/

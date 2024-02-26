@@ -27,6 +27,8 @@ final class Stickers: Model, Content{
     @Field(key: "image")
     var image : String
     
+    @Parent(key: "sticker_ID") var order: Order
+    
     init(){
         
     }

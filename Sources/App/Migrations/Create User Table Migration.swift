@@ -8,14 +8,14 @@
 import Foundation
 import Fluent
 
-struct createOrderTableMigration: AsyncMigration{
+struct createUserTableMigration: AsyncMigration{
     func prepare(on database: FluentKit.Database) async throws {
-        try await database.schema("Order")
+        try await database.schema("User")
         
             .id() // primary key
             .field("name", .string ,.required)
-            .field("price", .int ,.required)
-            .field("image", .string ,.required)
+            .field("phone_number", .int ,.required)
+           
         
         /*culomn name , data type , constraint
          مثل(.require  تشبه (NOT NULL) .reference("table name","culomn name")  تشبه (forginkey))*/
@@ -24,7 +24,7 @@ struct createOrderTableMigration: AsyncMigration{
     }
     
     func revert(on database: FluentKit.Database) async throws {
-        try await database.schema("Order")
+        try await database.schema("User")
             .delete()
     }
     
